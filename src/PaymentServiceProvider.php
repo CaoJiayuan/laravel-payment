@@ -10,6 +10,7 @@ namespace Nerio\Payment;
 
 
 use Illuminate\Support\ServiceProvider;
+use Yansongda\Pay\Pay;
 
 class PaymentServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,8 @@ class PaymentServiceProvider extends ServiceProvider
     public function register()
     {
         $this->config();
+
+        $this->registerManager();
     }
 
     protected function config()
@@ -26,5 +29,16 @@ class PaymentServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config' => config_path()
         ], 'payment');
+    }
+
+    protected function registerManager()
+    {
+        Manager::extend('alipay', function ($config) {
+            return Pay::alipay($config);
+        });
+
+        Manager::extend('wechat', function ($config) {
+            return Pay::wechat($config);
+        });
     }
 }

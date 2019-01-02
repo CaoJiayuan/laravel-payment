@@ -20,5 +20,12 @@
             "CaoJiayuan\\LaravelApi\\": "laravel-api/src/",
             "Nerio\\Payment\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nerio\\Payment\\PaymentServiceProvider"
+            ]
+        }
     }
 }
