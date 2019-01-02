@@ -14,10 +14,6 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Nerio\\Excel\\": "excel/src/",
-            "CaoJiayuan\\Utility\\": "utility/src/",
-            "CaoJiayuan\\LaravelApi\\": "laravel-api/src/",
             "Nerio\\Payment\\": "src/"
         }
     },
