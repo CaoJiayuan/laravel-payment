@@ -8,6 +8,7 @@
 
 namespace Nerio\Payment;
 
+use Yansongda\Pay\Contracts\GatewayApplicationInterface;
 use Yansongda\Pay\Gateways\Alipay;
 use Yansongda\Pay\Gateways\Wechat;
 
@@ -27,11 +28,19 @@ class Manager
         $this->config = $config;
     }
 
-    public function use($driver = null)
+    /**
+     * @param null $driver
+     * @return GatewayApplicationInterface
+     */
+    public function uses($driver = null)
     {
         return $this->getDriver($driver ?: $this->config['default']);
     }
 
+    /**
+     * @param $name
+     * @return GatewayApplicationInterface
+     */
     protected function getDriver($name)
     {
         if (array_key_exists($name, static::$drivers)) {
@@ -51,6 +60,6 @@ class Manager
     {
         $instance = new static(config('payment'));
 
-        return $instance->use($name);
+        return $instance->uses($name);
     }
 }

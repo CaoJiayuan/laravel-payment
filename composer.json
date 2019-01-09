@@ -23,5 +23,6 @@
                 "Nerio\\Payment\\PaymentServiceProvider"
             ]
         }
-    }
+    },
+    "description": "Payment component for laravel, support alipay|wechat"
 }
